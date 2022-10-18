@@ -1,0 +1,80 @@
+﻿<Window x:Class="ReportPatcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReportPatcher"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Изменение данных об организации в файлах отчётов" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <GroupBox Header="Данные организации" Margin="5" Grid.Row="2" Grid.RowSpan="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="Wrap" Grid.Row="0" Text="Полное Название организации" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="1" Text="Краткое название организации" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="2" Text="ИНН" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="3" Text="КПП" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="4" Text="Код организации, выданный в РАР" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="5" Text="Страна" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="6" Text="Регион" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Grid.Row="7" Text="Юр. Адрес" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                <TextBox Name="FullNameTB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="ShortNameTB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="InnTB" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="KppTB" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="ClientRegIdTB" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="CountryTB" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="RegionTB" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="DescriptionDB" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Тестовый отчёт" Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Margin="5">
+
+            <Grid>
+                <TextBox Name="TestReport" Margin="5"/>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1"></StackPanel>
+        <TextBox Name="FilePath" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,60,0" Height="25"/>
+        <Button Grid.Row="1" Content="Обзор..." VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="25" Margin="0 0 5 0"/>
+
+        <Button Content="Готово" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30"/>
+        <Button Content="Внести изменения" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="30" Grid.Column="1"/>
+
+
+    </Grid>
+</Window>
