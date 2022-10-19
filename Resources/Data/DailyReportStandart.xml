@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<ns:Documents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oref="http://fsrar.ru/WEGAIS/ClientRef_v2" xmlns:c="http://fsrar.ru/WEGAIS/Common" xmlns:as="http://fsrar.ru/WEGAIS/Asiiu" xmlns:prod="http://fsrar.ru/WEGAIS/ProductRef_v2" xmlns:ns="http://fsrar.ru/WEGAIS/WB_DOC_SINGLE_01">
+  <ns:Owner>
+    <ns:FSRAR_ID>01234567890</ns:FSRAR_ID>
+  </ns:Owner>
+  <ns:Document>
+    <ns:Asiiu>
+      <as:Sensor>
+        <as:SensorNumber>77_1</as:SensorNumber>
+        <as:PlaceId>1186240</as:PlaceId>
+        <as:SensorModel>AlcoSpot</as:SensorModel>
+      </as:Sensor>
+      <as:Producer>
+        <oref:UL>
+          <oref:ClientRegId>01234567890</oref:ClientRegId>
+          <oref:FullName>Межрегиональное Объединение Производителей Спирта «Объединенные Спиртоморы»</oref:FullName>
+          <oref:ShortName>Объединенные Спиртоморы</oref:ShortName>
+          <oref:INN>7725753653</oref:INN>
+          <oref:KPP>772501001</oref:KPP>
+          <oref:address>
+            <oref:Country>643</oref:Country>
+            <oref:RegionCode>40</oref:RegionCode>
+            <oref:description>г. Торжок, Ул. Васельмана, д.1</oref:description>
+          </oref:address>
+        </oref:UL>
+      </as:Producer>
+      <as:Data>
+        <as:Position>
+          <as:Product>
+            <prod:UnitType>Unpacked</prod:UnitType>
+            <prod:FullName>Спирт-сырец</prod:FullName>
+            <prod:AlcCode>1284120</prod:AlcCode>
+            <prod:ProductVCode>010</prod:ProductVCode>
+          </as:Product>
+          <as:StartDate>2022-07-01T00:00:00</as:StartDate>
+          <as:EndDate>2022-07-01T23:59:59</as:EndDate>
+          <as:VbsStart>0.00</as:VbsStart>
+          <as:VbsEnd>0.00</as:VbsEnd>
+          <as:AStart>0.00</as:AStart>
+          <as:AEnd>0.00</as:AEnd>
+          <as:PercentAlc>88.00</as:PercentAlc>
+          <as:BottleCountStart>0</as:BottleCountStart>
+          <as:BottleCountEnd>0</as:BottleCountEnd>
+          <as:Temperature>28.1</as:Temperature>
+          <as:Mode>005</as:Mode>
+        </as:Position>
+      </as:Data>
+    </ns:Asiiu>
+  </ns:Document>
+</ns:Documents>
