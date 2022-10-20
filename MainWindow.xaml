@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReportPatcher"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000">
+        Title="ReportPatcher" Height="720" Width="1200" ResizeMode="CanResize"
+        MaxHeight="720" MaxWidth="1200">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -14,16 +15,16 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Изменение данных об организации в файлах отчётов" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <GroupBox Header="Данные организации" Margin="5" Grid.Row="2" Grid.RowSpan="4">
+        <TextBlock Text="Изменение данных об организации в файлах отчётов" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="352,0,0,0" Width="296" />
+        <GroupBox Header="Данные организации" Margin="5,5,5,5" Grid.Row="2" Grid.RowSpan="4">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*"/>
@@ -51,29 +52,29 @@
 
                 <TextBox Name="FullNameTB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="ShortNameTB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="InnTB" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="KppTB" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="ClientRegIdTB" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="InnTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="KppTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="ClientRegIdTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="CountryTB" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="RegionTB" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="DescriptionDB" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <TextBox Name="AddressDescriptionDB" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
 
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Тестовый отчёт" Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Margin="5">
+        <GroupBox Header="Тестовый отчёт" Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Margin="5,5,5,5">
 
             <Grid>
-                <TextBox Name="TestReport" Margin="5"/>
+                <TextBox Name="TestReportTB" Margin="5" IsReadOnly="True" IsReadOnlyCaretVisible="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" />
             </Grid>
         </GroupBox>
 
-        <StackPanel Grid.Row="1"></StackPanel>
-        <TextBox Name="FilePath" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,60,0" Height="25"/>
-        <Button Grid.Row="1" Content="Обзор..." VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="25" Margin="0 0 5 0"/>
+        <TextBlock Text="Путь к файлам для модификации" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,20,0,0"/>
+        <TextBox Name="FilePathTB" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,60,0" Height="25" IsReadOnly="True"/>
+        <Button Grid.Row="1" Content="Обзор..." VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="25" Margin="5" Click="BrowseFolderPath"/>
 
-        <Button Content="Готово" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30"/>
-        <Button Content="Внести изменения" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="30" Grid.Column="1"/>
+        <Button Content="Готово" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30" Click="DisplayModifiedTestReport"/>
+        <Button Name="ChangeFilesInFolder" Content="Внести изменения" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="30" Grid.Column="1" Click="AdjustSettingsToFiles" IsEnabled="False"/>
 
 
     </Grid>

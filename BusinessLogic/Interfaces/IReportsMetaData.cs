@@ -2,9 +2,13 @@
 
 namespace ReportPatcher.BusinessLogic.Interfaces
 {
+    /// <summary>
+    /// Интерфейс для класса работы с мета-данными файлов
+    /// </summary>
     public interface IReportsMetaData
     {
-        public DateTime SetFileDataAsBeforeUpdate();
-        public int CountReportsInFilder(string folderPath);
+        void SetFileDataAsBeforeUpdate(string FilePath, DateTime DateBeforeUpd);
+        DateTime GetFileDataBeforeUpdate(string pathToFile);
+        int CountReportsInFolder(string folderPath);
     }
 }
