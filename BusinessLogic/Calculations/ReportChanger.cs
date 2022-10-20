@@ -1,6 +1,7 @@
 ﻿using ReportPatcher.BusinessLogic.Interfaces;
 using System;
 using System.IO;
+using System.Windows;
 using System.Xml;
 
 namespace ReportPatcher.BusinessLogic.Calculations
@@ -46,7 +47,15 @@ namespace ReportPatcher.BusinessLogic.Calculations
             XmlDocument doc = new XmlDocument();
             ReportsMetaData md = new ReportsMetaData();
             DateTime beforeUpd = md.GetFileDataBeforeUpdate(ModifiedReportPath);
-            doc.Load(ModifiedReportPath);
+            try
+            {
+                doc.Load(ModifiedReportPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось загрузить файл!\nВозможно, в выбранной папке присутствуют файлы помимо отчётов?", "Внимание", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
+            }
             doc.FirstChild.NextSibling.FirstChild.FirstChild.InnerText = dto.ClientRegId;
             var Producer = doc.FirstChild.NextSibling.FirstChild.NextSibling.FirstChild.FirstChild.NextSibling.FirstChild.ChildNodes;
             Producer[0].InnerText = dto.ClientRegId; // ClientRegId

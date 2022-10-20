@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\StylesDict.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.0" />
+    <PackageReference Include="Wpf.Themes" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +28,10 @@
     <Content Include="Resources\Data\DailyReportStandart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\StylesDict.xaml" />
   </ItemGroup>
 
 </Project>

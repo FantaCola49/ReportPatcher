@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="ReportPatcher" Height="720" Width="1200" ResizeMode="CanResize"
         MaxHeight="720" MaxWidth="1200">
+
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -23,8 +24,8 @@
             <RowDefinition Height="70*"/>
             <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Изменение данных об организации в файлах отчётов" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="352,0,0,0" Width="296" />
-        <GroupBox Header="Данные организации" Margin="5,5,5,5" Grid.Row="2" Grid.RowSpan="4">
+        <TextBlock Style="{DynamicResource HeaderText}" Text="Изменение данных об организации в файлах отчётов" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <GroupBox Header="Данные организации" Margin="5" Grid.Row="2" Grid.RowSpan="4">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*"/>
@@ -41,14 +42,14 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock TextWrapping="Wrap" Grid.Row="0" Text="Полное Название организации" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="1" Text="Краткое название организации" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="2" Text="ИНН" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="3" Text="КПП" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="4" Text="Код организации, выданный в РАР" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="5" Text="Страна" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="6" Text="Регион" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock TextWrapping="Wrap" Grid.Row="7" Text="Юр. Адрес" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="0" Text="Полное название" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="1" Text="Краткое название" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="2" Text="ИНН" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="3" Text="КПП" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="4" Text="Код организации в РАР" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="5" Text="Страна" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="6" Text="Регион" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Style="{DynamicResource ExampleTextBlock}" TextWrapping="Wrap" Grid.Row="7" Text="Юр. Адрес" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
                 <TextBox Name="FullNameTB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="ShortNameTB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
@@ -62,19 +63,22 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Тестовый отчёт" Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Margin="5,5,5,5">
+        <GroupBox Header="Тестовый отчёт" Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" Margin="5">
 
             <Grid>
                 <TextBox Name="TestReportTB" Margin="5" IsReadOnly="True" IsReadOnlyCaretVisible="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" />
             </Grid>
         </GroupBox>
 
-        <TextBlock Text="Путь к файлам для модификации" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,20,0,0"/>
-        <TextBox Name="FilePathTB" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,60,0" Height="25" IsReadOnly="True"/>
-        <Button Grid.Row="1" Content="Обзор..." VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="25" Margin="5" Click="BrowseFolderPath"/>
+        <GroupBox Header="Путь к файлам для модификации" Grid.Row="1" Margin="5">
+            <Grid>
+                <TextBox Name="FilePathTB" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,60,0" Height="25" IsReadOnly="True"/>
+                <Button Grid.Row="1" Content="Обзор..." VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="25" Margin="5" Click="BrowseFolderPath"/>
+            </Grid>
+        </GroupBox>
 
-        <Button Content="Готово" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30" Click="DisplayModifiedTestReport"/>
-        <Button Name="ChangeFilesInFolder" Content="Внести изменения" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="30" Grid.Column="1" Click="AdjustSettingsToFiles" IsEnabled="False"/>
+        <Button  Content="Готово" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30" Click="DisplayModifiedTestReport"/>
+        <Button  Name="ChangeFilesInFolder" Content="Внести изменения" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="30" Grid.Column="1" Click="AdjustSettingsToFiles" IsEnabled="False"/>
 
 
     </Grid>

@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReportPatcher.BusinessLogic.Calculations;
+
+
 
 namespace ReportPatcher
 {
@@ -19,6 +22,9 @@ namespace ReportPatcher
         public MainWindow()
         {
             InitializeComponent();
+            ResourceDictionary skin = new ResourceDictionary();
+            skin.Source = new Uri(@"\Resources\StylesDict.xaml", UriKind.Relative);
+            App.Current.Resources.MergedDictionaries.Add(skin);
             StandartReportPath = @$"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportStandart.xml";
             TestReportTB.Text = File.ReadAllText(StandartReportPath);
             ModifiedReportPath = $@"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportModified.xml";
