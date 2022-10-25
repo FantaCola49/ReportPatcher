@@ -2,11 +2,12 @@
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ReportPatcher.BusinessLogic.Calculations;
-
-
+using ReportPatcher.BusinessLogic.ComboBoxData;
+using ReportPatcher.BusinessLogic.Entities;
 
 namespace ReportPatcher
 {
@@ -16,19 +17,21 @@ namespace ReportPatcher
     public partial class MainWindow : Window
     {
         private readonly Regex digitalFilter = new Regex(@"\d");
-        private string ModifiedReportPath;
-        private string StandartReportPath;
+        private readonly string ModifiedReportPath = $@"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportModified.xml";
+        private readonly string StandartReportPath = @$"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportStandart.xml";
 
         public MainWindow()
         {
             InitializeComponent();
-            ResourceDictionary skin = new ResourceDictionary();
-            skin.Source = new Uri(@"\Resources\StylesDict.xaml", UriKind.Relative);
-            App.Current.Resources.MergedDictionaries.Add(skin);
-            StandartReportPath = @$"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportStandart.xml";
+            // Подгружаем стандартный отчёт
             TestReportTB.Text = File.ReadAllText(StandartReportPath);
-            ModifiedReportPath = $@"{Directory.GetCurrentDirectory()}\Resources\Data\DailyReportModified.xml";
+            // Подгружаем список стран (Только РФ)
+            FillCountriesComboBox();
+            // Подгружаем список регионов
+            FillRegionsComboBox();
         }
+
+
 
         /// <summary>
         /// Кнопка Обзор...
@@ -80,14 +83,17 @@ namespace ReportPatcher
         /// <returns></returns>
         private DataDTO GetOrganizationData()
         {
+            ComboBoxItem countryCode = (ComboBoxItem)CountryCB.SelectedItem;
+            StateProvince regionCode = (StateProvince)RegionCB.SelectedItem;
+            
             DataDTO dto = new DataDTO
             {
                 FullName = FullNameTB.Text,
                 ShortName = ShortNameTB.Text,
                 INN = InnTB.Text,
                 KPP = KppTB.Text,
-                Country = "77", //TODO: сделать выпадающий список Стран
-                RegionCode = RegionTB.Text,
+                Country = countryCode.Tag.ToString(),
+                RegionCode = regionCode.Code,
                 ClientRegId = ClientRegIdTB.Text,
                 JuridicalAddress = AddressDescriptionDB.Text,
             };
@@ -116,6 +122,31 @@ namespace ReportPatcher
                     "\nПятиминутки: " + @"C:\Files\Snapshots" +
                     "\nСессии: " + @"C:\Files\WayBills"
                                                        ,"Внимние!", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        /// <summary>
+        /// Подготовит выпадающий список регионов РФ
+        /// </summary>
+        private void FillRegionsComboBox()
+        {
+            StateProvinceList provinceList = new StateProvinceList();
+            var regions = provinceList.GetStateProvincesList();
+            RegionCB.ItemsSource = regions;
+            RegionCB.DisplayMemberPath = "Title";
+            RegionCB.SelectedItem = regions[0];
+        }
+
+        /// <summary>
+        /// Подготовит выпадающий список стран
+        /// </summary>
+        /// <remarks>По дефолту только Росиия</remarks>
+        private void FillCountriesComboBox()
+        {
+            StateProvinceList list = new StateProvinceList();
+            var countries = list.GetCountryList();
+            CountryCB.ItemsSource = countries;
+            CountryCB.DisplayMemberPath = "Title";
+            CountryCB.SelectedItem = countries[0];
         }
     }
 }

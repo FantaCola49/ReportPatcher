@@ -56,8 +56,8 @@
                 <TextBox Name="InnTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="KppTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="ClientRegIdTB" PreviewTextInput="NumberValidationTextBox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="CountryTB" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
-                <TextBox Name="RegionTB" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <ComboBox Name="CountryCB" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
+                <ComboBox Name="RegionCB" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
                 <TextBox Name="AddressDescriptionDB" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" Height="25"/>
 
             </Grid>

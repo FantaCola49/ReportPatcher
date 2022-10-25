@@ -11,8 +11,5 @@
         public string RegionCode;
         public string JuridicalAddress;
 
-        //TODO: RegionCode -> Сделать (скопипастить) словарь кодов РЕГИОНОВ РФ
-        //TODO: RegionCode -> Сделать (скопипастить) словарь кодов СТРАН
-
     }
 }
