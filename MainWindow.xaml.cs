@@ -83,7 +83,7 @@ namespace ReportPatcher
         /// <returns></returns>
         private DataDTO GetOrganizationData()
         {
-            ComboBoxItem countryCode = (ComboBoxItem)CountryCB.SelectedItem;
+            Country countryCode = (Country)CountryCB.SelectedItem;
             StateProvince regionCode = (StateProvince)RegionCB.SelectedItem;
             
             DataDTO dto = new DataDTO
@@ -92,7 +92,7 @@ namespace ReportPatcher
                 ShortName = ShortNameTB.Text,
                 INN = InnTB.Text,
                 KPP = KppTB.Text,
-                Country = countryCode.Tag.ToString(),
+                Country = countryCode.ThreeLetterIsoCode,
                 RegionCode = regionCode.Code,
                 ClientRegId = ClientRegIdTB.Text,
                 JuridicalAddress = AddressDescriptionDB.Text,
