@@ -1,13 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using ReportPatcher.BusinessLogic.Calculations;
 using ReportPatcher.BusinessLogic.ComboBoxData;
 using ReportPatcher.BusinessLogic.Entities;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Input;
+using System.Xml;
 
 namespace ReportPatcher
 {
@@ -71,7 +70,9 @@ namespace ReportPatcher
         /// <param name="e"></param>
         private void DisplayModifiedTestReport(object sender, RoutedEventArgs e)
         {
-            ReportChanger repChanger = new ReportChanger(GetOrganizationData());
+            XmlDocument doc = new XmlDocument();
+            ReportsMetaData rmd = new ReportsMetaData();
+            ReportChanger repChanger = new ReportChanger(GetOrganizationData(), doc, rmd);
             repChanger.ModifyDocument(ModifiedReportPath);
             TestReportTB.Text = File.ReadAllText(ModifiedReportPath);
             ChangeFilesInFolder.IsEnabled = true;
@@ -85,7 +86,7 @@ namespace ReportPatcher
         {
             Country countryCode = (Country)CountryCB.SelectedItem;
             StateProvince regionCode = (StateProvince)RegionCB.SelectedItem;
-            
+
             DataDTO dto = new DataDTO
             {
                 FullName = FullNameTB.Text,
@@ -107,8 +108,10 @@ namespace ReportPatcher
         /// <param name="e"></param>
         private void AdjustSettingsToFiles(object sender, RoutedEventArgs e)
         {
-            ReportChanger repChanger = new ReportChanger(GetOrganizationData());
-            
+            XmlDocument doc = new XmlDocument();
+            ReportsMetaData rmd = new ReportsMetaData();
+            ReportChanger repChanger = new ReportChanger(GetOrganizationData(), doc, rmd);
+
             if (FilePathTB.Text != "")
             {
                 ReportsMetaData md = new ReportsMetaData();
@@ -121,7 +124,7 @@ namespace ReportPatcher
                     "\nСуточные: " + @"C:\Files\Dailies" +
                     "\nПятиминутки: " + @"C:\Files\Snapshots" +
                     "\nСессии: " + @"C:\Files\WayBills"
-                                                       ,"Внимние!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                                       , "Внимние!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         /// <summary>

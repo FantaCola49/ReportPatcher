@@ -7,7 +7,7 @@ namespace ReportPatcher.BusinessLogic.Calculations
     /// <summary>
     /// Класс работы с мета-данными файлов
     /// </summary>
-    internal class ReportsMetaData : IReportsMetaData
+    public class ReportsMetaData : IReportsMetaData
     {
         /// <summary>
         /// Получить дату изменения файла до обновления

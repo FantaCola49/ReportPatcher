@@ -2,14 +2,14 @@
 {
     public class DataDTO
     {
-        public string ClientRegId;
-        public string FullName;
-        public string ShortName;
-        public string INN;
-        public string KPP;
-        public string Country;
-        public string RegionCode;
-        public string JuridicalAddress;
+        public string ClientRegId { get; set; }
+        public string FullName { get; set; }
+        public string ShortName { get; set; }
+        public string INN { get; set; }
+        public string KPP { get; set; }
+        public string Country { get; set; }
+        public string RegionCode { get; set; }
+        public string JuridicalAddress { get; set; }
 
     }
 }

@@ -9,16 +9,21 @@ namespace ReportPatcher.BusinessLogic.Calculations
     public class ReportChanger : IReportChanger
     {
         DataDTO dto;
+        XmlDocument doc;
+        IReportsMetaData md;
 
         /// <summary>
         /// Cto-r
         /// </summary>
         /// <param name="FilledDto"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public ReportChanger(DataDTO FilledDto)
+        public ReportChanger(DataDTO FilledDto,
+            XmlDocument document, ReportsMetaData metaData)
         {
             if (FilledDto == null) throw new ArgumentNullException(nameof(dto));
             this.dto = FilledDto;
+            doc = document;
+            md = metaData;
         }
 
         /// <summary>
@@ -44,8 +49,6 @@ namespace ReportPatcher.BusinessLogic.Calculations
         /// <remarks>Модификация файла НЕ ОТРАЗИТСЯ на времени его изменения</remarks>
         public void ModifyDocument(string ModifiedReportPath)
         {
-            XmlDocument doc = new XmlDocument();
-            ReportsMetaData md = new ReportsMetaData();
             DateTime beforeUpd = md.GetFileDataBeforeUpdate(ModifiedReportPath);
             try
             {
